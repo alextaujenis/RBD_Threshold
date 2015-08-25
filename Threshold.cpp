@@ -35,8 +35,13 @@ int Threshold::computeLevel(int value) {
   if(value < _levels[0]) {
     return 0;
   }
-  // it's over
-  else if (value >= _levels[_total_levels]) {
+  // it's exactly at the maxLevel
+  else if(value == _levels[_total_levels]) {
+    // return the last level
+    return _total_levels;
+  }
+  // it's over the maxLevel
+  else if (value > _levels[_total_levels]) {
     // return a number only one greater than the number of levels
     return _total_levels + 1;
   }

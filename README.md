@@ -15,10 +15,10 @@ This takes an input domain of [under 0, 0-9, 10-19, 20-29, over 29] and converts
     Threshold threshold(3);
 
     void setup() {
-      threshold.setLevel(1,0);   // 0 - 9      low
-      threshold.setLevel(2,10);  // 10 - 19    medium
-      threshold.setLevel(3,20);  // 20 - 29    high
-      threshold.setMaxLevel(30); // max = 30   over
+      threshold.setLevel(1,0);   // [0 - 9]       low
+      threshold.setLevel(2,10);  // [10 - 19]     medium
+      threshold.setLevel(3,20);  // [20 - max]    high
+      threshold.setMaxLevel(30); // max = 30      high
     }
 
     void loop() {
@@ -30,7 +30,7 @@ This takes an input domain of [under 0, 0-9, 10-19, 20-29, over 29] and converts
       compute(11);  // => 2   med
       compute(15);  // => 2   med
       compute(20);  // => 3   high
-      compute(29);  // => 3   high
+      compute(30);  // => 3   high
       compute(99);  // => 4   over
       compute(999); // => 4   over
     }
@@ -65,8 +65,8 @@ Provide integers for the index and value to set an individual level. This is not
 
     threshold.setLevel(1,0);   // [0 - 9]       low
     threshold.setLevel(2,10);  // [10 - 19]     medium
-    threshold.setLevel(3,20);  // [20 - 29]     high
-    threshold.setMaxLevel(30); // max = 30      over
+    threshold.setLevel(3,20);  // [20 - max]    high
+    threshold.setMaxLevel(30); // max = 30      high
 
 ##getLevel(index)
 Provide an integer for a level index and this returns the value set for that level.
@@ -90,8 +90,8 @@ Provide an integer for the input domain and this returns an integer threshold le
 * 1 for your first level
 * 2 for your second level
 * n for your nth level
-* sizeof(n) + 1 for any value equal to or over the [setMaxLevel()](#setmaxlevelvalue)
-* -1 if it found an error in the input domain you created when calling [setLevel()](#setlevelindex-value)
+* sizeof(n) + 1 for any value greater than [getMaxLevel()](#getmaxlevel)
+* -1 if an error was found in the input domain (non-contiguous range)
 
 Example:
 
