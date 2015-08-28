@@ -12,8 +12,11 @@ Threshold::Threshold(int total_levels) {
 }
 
 void Threshold::setLevel(int index, int value) {
-  // store the level in the 0-based array
-  _levels[index - 1] = value;
+  // check the bounds
+  if(index > 0 && index <= _total_levels) {
+    // store the level in the 0-based array
+    _levels[index - 1] = value;
+  }
 }
 
 int Threshold::getLevel(int index) {
