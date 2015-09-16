@@ -8,11 +8,11 @@ This takes an input domain of [under 0, 0-9, 10-19, 20-29, over 29] and converts
 0. Open a serial connection at 115200 BAUD
 0. Watch as values are converted into the output range
 
-##[example.ino](https://github.com/alextaujenis/Threshold/blob/master/example/example.ino)
+##[example.ino](https://github.com/alextaujenis/RBD_Threshold/blob/master/example/example.ino)
 
-    #include <Threshold.h>
+    #include <RBD_Threshold.h>
 
-    Threshold threshold(3);
+    RBD::Threshold threshold(3);
 
     void setup() {
       threshold.setLevel(1,0);   // [0 - 9]       low
@@ -58,7 +58,7 @@ Create a new instance and provide an integer for the maximum number of levels of
 
 If you need more than 3 levels, this library will dynamically allocate an array large enough to accommodate the size you provide the constructor.
 
-    Threshold threshold(3);
+    RBD::Threshold threshold(3);
 
 ##setLevel(index, value)
 Provide integers for the index and value to set an individual level. This is not zero based, the first level starts at 1. You must also call [setMaxLevel()](#setmaxlevelvalue) at the end to set an upper bounds of your last level.

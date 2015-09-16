@@ -2,11 +2,11 @@
 // Copyright 2015 Alex Taujenis
 // MIT License
 
-#include <Threshold.h>
+#include <RBD_Threshold.h>
 
 #define BAUD 115200
 
-Threshold threshold(3);
+RBD::Threshold threshold(3);
 
 void setup() {
   Serial.begin(BAUD);
