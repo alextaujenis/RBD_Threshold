@@ -11,21 +11,21 @@ namespace RBD {
   class Threshold {
     public:
       Threshold(int level_count);
-      void setLevel(int index, int value);    // overloaded: set a threshold value for a level
-      void setLevel(int index, float value);  // same as above
-      int getLevel(int index);                // get the threshold value for a level
-      void setMaxLevel(int value);            // overloaded: set the maximum threshold value
-      void setMaxLevel(float value);          // same as above
-      int getMaxLevel();                      // get the maximum threshold value
-      int computeLevel(int value);            // overloaded: convert an input domain value to the output range
-      int computeLevel(float value);          // same as above
+      void setLevel(int index, int value);     // overloaded: set a threshold value for a level
+      void setLevel(int index, double value);  // same as above
+      int getLevel(int index);                 // get the threshold value for a level
+      void setMaxLevel(int value);             // overloaded: set the maximum threshold value
+      void setMaxLevel(double value);          // same as above
+      int getMaxLevel();                       // get the maximum threshold value
+      int computeLevel(int value);             // overloaded: convert an input domain value to the output range
+      int computeLevel(double value);          // same as above
     private:
-      int _total_levels;                      // total number of levels for this threshold
-      float* _levels;                         // dynamically allocated array for the levels
-      int _i;                                 // temp variable to loop through the levels
-      void _setLevel(int index, float value); // set a threshold value for a level
-      void _setMaxLevel(float value);         // set the maximum threshold value
-      int _computeLevel(float value);         // convert an input domain value to the output range
+      int _total_levels;                       // total number of levels for this threshold
+      double* _levels;                         // dynamically allocated array for the levels
+      int _i;                                  // temp variable to loop through the levels
+      void _setLevel(int index, double value); // set a threshold value for a level
+      void _setMaxLevel(double value);         // set the maximum threshold value
+      int _computeLevel(double value);         // convert an input domain value to the output range
   };
 }
 #endif

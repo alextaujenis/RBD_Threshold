@@ -11,11 +11,11 @@ RBD::Timer timer;
 RBD::Threshold threshold(3);
 
 void setup() {
-  threshold.setLevel(1,0);   // [0 - 9]       low
-  threshold.setLevel(2,10);  // [10 - 19]     medium
-  threshold.setLevel(3,20);  // [20 - max]    high
-  threshold.setMaxLevel(30); // max = 30      high
-  timer.setTimeout(3000);
+  threshold.setLevel(1,0);    // [0 - 10.4]    low
+  threshold.setLevel(2,10.5); // [10.5 - 19.9] medium
+  threshold.setLevel(3,20);   // [20 - max]    high
+  threshold.setMaxLevel(30);  // max = 30      high
+  timer.setTimeout(5000);
   Serial.begin(BAUD);
 }
 
@@ -27,20 +27,18 @@ void loop() {
 }
 
 void computeEverything() {
-  compute(-1);  // => 0   under
-  compute(0);   // => 1   low
-  compute(1);   // => 1   low
-  compute(9);   // => 1   low
-  compute(10);  // => 2   med
-  compute(11);  // => 2   med
-  compute(15);  // => 2   med
-  compute(20);  // => 3   high
-  compute(30);  // => 3   high
-  compute(99);  // => 4   over
-  compute(999); // => 4   over
+  compute(-1);    // => 0   under
+  compute(0);     // => 1   low
+  compute(10.4);  // => 1   low
+  compute(10.5);  // => 2   med
+  compute(10.6);  // => 2   med
+  compute(21);    // => 3   high
+  compute(30);    // => 3   high
+  compute(30.01); // => 4   over
+  compute(999);   // => 4   over
 }
 
-void compute(int value) {
+void compute(float value) {
   Serial.print("value: ");
   Serial.print(value);
   Serial.print(" level: ");

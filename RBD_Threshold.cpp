@@ -9,16 +9,16 @@ namespace RBD {
   Threshold::Threshold(int total_levels) {
     _total_levels = total_levels;
     // leave a space for the over-bounds level
-    _levels = new float [_total_levels + 1];
+    _levels = new double [_total_levels + 1];
   }
 
   // overloaded function
   void Threshold::setLevel(int index, int value) {
-    _setLevel(index, float(value));
+    _setLevel(index, double(value));
   }
 
   // overloaded function
-  void Threshold::setLevel(int index, float value) {
+  void Threshold::setLevel(int index, double value) {
     _setLevel(index, value);
   }
 
@@ -29,11 +29,11 @@ namespace RBD {
 
   // overloaded function
   void Threshold::setMaxLevel(int value) {
-    _setMaxLevel(float(value));
+    _setMaxLevel(double(value));
   }
 
   // overloaded function
-  void Threshold::setMaxLevel(float value) {
+  void Threshold::setMaxLevel(double value) {
     _setMaxLevel(value);
   }
 
@@ -43,11 +43,11 @@ namespace RBD {
 
   // overloaded function
   int Threshold::computeLevel(int value) {
-    return _computeLevel(float(value));
+    return _computeLevel(double(value));
   }
 
   // overloaded function
-  int Threshold::computeLevel(float value) {
+  int Threshold::computeLevel(double value) {
     return _computeLevel(value);
   }
 
@@ -55,7 +55,7 @@ namespace RBD {
   // private
 
   // convert the domain into the range
-  int Threshold::_computeLevel(float value) {
+  int Threshold::_computeLevel(double value) {
     // it's under
     if(value < _levels[0]) {
       return 0;
@@ -85,7 +85,7 @@ namespace RBD {
     }
   }
 
-  void Threshold::_setLevel(int index, float value) {
+  void Threshold::_setLevel(int index, double value) {
     // check the bounds
     if(index > 0 && index <= _total_levels) {
       // store the level in the 0-based array
@@ -93,7 +93,7 @@ namespace RBD {
     }
   }
 
-  void Threshold::_setMaxLevel(float value) {
+  void Threshold::_setMaxLevel(double value) {
     _levels[_total_levels] = value;
   }
 }
