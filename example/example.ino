@@ -2,10 +2,12 @@
 // Copyright 2015 Alex Taujenis
 // MIT License
 
+#include <RBD_Timer.h>
 #include <RBD_Threshold.h>
 
 #define BAUD 115200
 
+RBD::Timer timer;
 RBD::Threshold threshold(3);
 
 void setup() {
@@ -14,9 +16,17 @@ void setup() {
   threshold.setLevel(2,10);  // [10 - 19]     medium
   threshold.setLevel(3,20);  // [20 - max]    high
   threshold.setMaxLevel(30); // max = 30      high
+  timer.setTimeout(3000);
 }
 
 void loop() {
+  if(timer.isExpired()) {
+    timer.restart();
+    computeEverything();
+  }
+}
+
+void computeEverything() {
   compute(-1);  // => 0   under
   compute(0);   // => 1   low
   compute(1);   // => 1   low
@@ -35,5 +45,4 @@ void compute(int value) {
   Serial.print(value);
   Serial.print(" level: ");
   Serial.println(threshold.computeLevel(value));
-  delay(500); // delay sucks but it helps see serial output here
 }
