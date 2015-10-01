@@ -2,7 +2,7 @@
 // Copyright 2015 Alex Taujenis
 // MIT License
 
-#include <RBD_Timer.h>
+#include <RBD_Timer.h> // https://github.com/alextaujenis/RBD_Timer
 #include <RBD_Threshold.h>
 
 #define BAUD 115200
@@ -11,12 +11,12 @@ RBD::Timer timer;
 RBD::Threshold threshold(3);
 
 void setup() {
-  Serial.begin(BAUD);
   threshold.setLevel(1,0);   // [0 - 9]       low
   threshold.setLevel(2,10);  // [10 - 19]     medium
   threshold.setLevel(3,20);  // [20 - max]    high
   threshold.setMaxLevel(30); // max = 30      high
   timer.setTimeout(3000);
+  Serial.begin(BAUD);
 }
 
 void loop() {

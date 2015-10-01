@@ -4,14 +4,20 @@ Quickly set and check an arbitrary number of thresholds. Provide an input domain
 ##Example Setup
 This takes an input domain of [under 0, 0-9, 10-19, 20-29, over 29] and converts it to a quantile output range of [under, low, medium, high, over]
 
-0. Install this library and load the example sketch on to an Arduino
+0. Install this threshold library (and the [dependency](https://github.com/alextaujenis/RBD_Timer) for the example)
+0. Load the example sketch on to an Arduino
 0. Open a serial connection at 115200 BAUD
 0. Watch as values are converted into the output range
 
 ##[example.ino](https://github.com/alextaujenis/RBD_Threshold/blob/master/example/example.ino)
+The [RBD Timer Library](https://github.com/alextaujenis/RBD_Timer) is a dependency for only the example code below, and is not a requirement while using this threshold library by itself.
 
+    #include <RBD_Timer.h> // https://github.com/alextaujenis/RBD_Timer
     #include <RBD_Threshold.h>
 
+    #define BAUD 115200
+
+    RBD::Timer timer;
     RBD::Threshold threshold(3);
 
     void setup() {
@@ -19,9 +25,18 @@ This takes an input domain of [under 0, 0-9, 10-19, 20-29, over 29] and converts
       threshold.setLevel(2,10);  // [10 - 19]     medium
       threshold.setLevel(3,20);  // [20 - max]    high
       threshold.setMaxLevel(30); // max = 30      high
+      timer.setTimeout(3000);
+      Serial.begin(BAUD);
     }
 
     void loop() {
+      if(timer.isExpired()) {
+        timer.restart();
+        computeEverything();
+      }
+    }
+
+    void computeEverything() {
       compute(-1);  // => 0   under
       compute(0);   // => 1   low
       compute(1);   // => 1   low
@@ -40,7 +55,6 @@ This takes an input domain of [under 0, 0-9, 10-19, 20-29, over 29] and converts
       Serial.print(value);
       Serial.print(" level: ");
       Serial.println(threshold.computeLevel(value));
-      delay(500); // delay sucks but it helps see serial output here
     }
 
 #Documentation
@@ -61,7 +75,7 @@ If you need more than 3 levels, this library will dynamically allocate an array 
     RBD::Threshold threshold(3);
 
 ##setLevel(index, value)
-Provide integers for the index and value to set an individual level. This is not zero based, the first level starts at 1. You must also call [setMaxLevel()](#setmaxlevelvalue) at the end to set an upper bounds of your last level.
+Provide an integer for the index, then provide either an integer or a float for the value. This is not zero based, the first level index starts at 1. You must also call [setMaxLevel()](#setmaxlevelvalue) at the end to set an upper bounds of your last level.
 
     threshold.setLevel(1,0);   // [0 - 9]       low
     threshold.setLevel(2,10);  // [10 - 19]     medium
@@ -69,22 +83,22 @@ Provide integers for the index and value to set an individual level. This is not
     threshold.setMaxLevel(30); // max = 30      high
 
 ##getLevel(index)
-Provide an integer for a level index and this returns the value set for that level.
+Returns the value previously set for the level at that index.
 
     threshold.getLevel(3) // => 20
 
 ##setMaxLevel(value)
-Set the upper-bounds threshold of the last level.
+Set the upper threshold of the last level. This can be either an integer or a float.
 
     threshold.setMaxLevel(30);
 
 ##getMaxLevel()
-Returns the upper-bounds threshold of the last level.
+Returns the upper threshold of the last level.
 
     threshold.getMaxLevel() // => 30
 
 ##computeLevel(value)
-Provide an integer for the input domain and this returns an integer threshold level.
+Provide an integer or float for the input domain and this returns the computed threshold level.
 
 * it returns 0 for values that are under the first level
 * 1 for your first level
