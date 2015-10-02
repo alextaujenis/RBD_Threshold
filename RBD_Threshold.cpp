@@ -22,7 +22,7 @@ namespace RBD {
     _setLevel(index, value);
   }
 
-  int Threshold::getLevel(int index) {
+  double Threshold::getLevel(int index) {
     // get the level from the 0-based array
     return _levels[index - 1];
   }
@@ -37,7 +37,7 @@ namespace RBD {
     _setMaxLevel(value);
   }
 
-  int Threshold::getMaxLevel() {
+  double Threshold::getMaxLevel() {
     return _levels[_total_levels];
   }
 

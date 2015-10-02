@@ -13,10 +13,10 @@ namespace RBD {
       Threshold(int level_count);
       void setLevel(int index, int value);     // overloaded: set a threshold value for a level
       void setLevel(int index, double value);  // same as above
-      int getLevel(int index);                 // get the threshold value for a level
+      double getLevel(int index);                 // get the threshold value for a level
       void setMaxLevel(int value);             // overloaded: set the maximum threshold value
       void setMaxLevel(double value);          // same as above
-      int getMaxLevel();                       // get the maximum threshold value
+      double getMaxLevel();                       // get the maximum threshold value
       int computeLevel(int value);             // overloaded: convert an input domain value to the output range
       int computeLevel(double value);          // same as above
     private:
