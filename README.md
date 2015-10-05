@@ -25,34 +25,19 @@ The [RBD Timer Library](https://github.com/alextaujenis/RBD_Timer) is a dependen
       threshold.setLevel(2,10.5); // [10.5 - 19.9] medium
       threshold.setLevel(3,20);   // [20 - max]    high
       threshold.setMaxLevel(30);  // max = 30      high
-      timer.setTimeout(5000);
+      timer.setTimeout(3000);
       Serial.begin(BAUD);
     }
 
     void loop() {
-      if(timer.isExpired()) {
-        timer.restart();
-        computeEverything();
+      if(timer.onRestart()) {
+        Serial.println(threshold.computeLevel(-1));    // under
+        Serial.println(threshold.computeLevel(0));     // low
+        Serial.println(threshold.computeLevel(10.51)); // medium
+        Serial.println(threshold.computeLevel(21));    // high
+        Serial.println(threshold.computeLevel(999));   // over
+        Serial.println("---");
       }
-    }
-
-    void computeEverything() {
-      compute(-1);    // => 0   under
-      compute(0);     // => 1   low
-      compute(10.4);  // => 1   low
-      compute(10.5);  // => 2   med
-      compute(10.6);  // => 2   med
-      compute(21);    // => 3   high
-      compute(30);    // => 3   high
-      compute(30.01); // => 4   over
-      compute(999);   // => 4   over
-    }
-
-    void compute(float value) {
-      Serial.print("value: ");
-      Serial.print(value);
-      Serial.print(" level: ");
-      Serial.println(threshold.computeLevel(value));
     }
 
 #Documentation
