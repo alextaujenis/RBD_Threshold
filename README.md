@@ -2,7 +2,7 @@
 Quickly set and check an arbitrary number of thresholds. Provide an input domain and this library will convert it to a quantile output range.
 
 ##Example Setup
-This takes an input domain of [under 0, 0-9, 10-19, 20-29, over 29] and converts it to a quantile output range of [under, low, medium, high, over]
+This takes an input domain of [under 0, 0-10.4, 10.5-19.9, 20-30, over 30] and converts it to a quantile output range of [under, low, medium, high, over]
 
 0. Install this threshold library (and the [dependency](https://github.com/alextaujenis/RBD_Timer) for the example)
 0. Load the example sketch on to an Arduino
