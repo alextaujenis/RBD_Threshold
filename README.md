@@ -88,7 +88,7 @@ Provide an integer or float for the input domain and this returns the computed t
 * 2 for your second level
 * n for your nth level
 * sizeof(n) + 1 for any value greater than [getMaxLevel()](#getmaxlevel)
-* -1 if an error was found in the input domain (non-contiguous range)
+* -1 if the value was not found within the range
 
 Example:
 
