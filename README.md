@@ -12,32 +12,23 @@ This takes an input domain of [under 0, 0-10.4, 10.5-19.9, 20-30, over 30] and c
 ##[example.ino](https://github.com/alextaujenis/RBD_Threshold/blob/master/example/example.ino)
 The [RBD Timer Library](https://github.com/alextaujenis/RBD_Timer) is a dependency for only the example code below, and is not a requirement while using this threshold library by itself.
 
-    #include <RBD_Timer.h> // https://github.com/alextaujenis/RBD_Timer
     #include <RBD_Threshold.h>
 
-    #define BAUD 115200
-
-    RBD::Timer timer;
-    RBD::Threshold threshold(3);
+    RBD::Threshold threshold(3); // 3 levels
 
     void setup() {
-      threshold.setLevel(1,0);    // [0 - 10.4]    low
-      threshold.setLevel(2,10.5); // [10.5 - 19.9] medium
-      threshold.setLevel(3,20);   // [20 - max]    high
-      threshold.setMaxLevel(30);  // max = 30      high
-      timer.setTimeout(3000);
-      Serial.begin(BAUD);
+      threshold.setLevel(1,0);    // low
+      threshold.setLevel(2,10.5); // medium
+      threshold.setLevel(3,20);   // high
+      threshold.setMaxLevel(30);
     }
 
     void loop() {
-      if(timer.onRestart()) {
-        Serial.println(threshold.computeLevel(-1));    // under
-        Serial.println(threshold.computeLevel(0));     // low
-        Serial.println(threshold.computeLevel(10.51)); // medium
-        Serial.println(threshold.computeLevel(21));    // high
-        Serial.println(threshold.computeLevel(999));   // over
-        Serial.println("---");
-      }
+      Serial.println(threshold.computeLevel(-1));
+      Serial.println(threshold.computeLevel(8));
+      Serial.println(threshold.computeLevel(10.6));
+      Serial.println(threshold.computeLevel(30));
+      Serial.println(threshold.computeLevel(31));
     }
 
 #Documentation
