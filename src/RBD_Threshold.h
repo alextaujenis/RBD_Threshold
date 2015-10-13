@@ -1,4 +1,5 @@
-// Arduino Threshold Library - Quickly set and check an arbitrary number of thresholds
+// Arduino RBD Threshold Library v1.0.0 - Quickly set and check an arbitrary number of thresholds.
+// https://github.com/alextaujenis/RBD_Threshold
 // Copyright 2015 Alex Taujenis
 // MIT License
 

@@ -1,0 +1,6 @@
+Threshold	KEYWORD1
+setLevel	KEYWORD2
+getLevel	KEYWORD2
+setMaxLevel	KEYWORD2
+getMaxLevel	KEYWORD2
+computeLevel	KEYWORD2
