@@ -2,6 +2,7 @@
 Set and check numeric quantile scales.
 
 * [Documentation](http://robotsbigdata.com/docs-arduino-threshold.html)
+* [Download Library](https://github.com/alextaujenis/RBD_Threshold/raw/master/extras/RBD_Threshold.zip)
 * [Project Website](http://robotsbigdata.com)
 * [Report an Issue](https://github.com/alextaujenis/RBD_Threshold/issues/new)*
 
