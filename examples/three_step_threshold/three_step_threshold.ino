@@ -1,4 +1,4 @@
-// Arduino RBD Threshold Library v1.0.1 Example - Convert an input domain to a numeric quantile output range.
+// Arduino RBD Threshold Library v1.0.2 Example - Convert an input domain to a numeric quantile output range.
 // https://github.com/alextaujenis/RBD_Threshold
 // Copyright 2015 Alex Taujenis
 // MIT License

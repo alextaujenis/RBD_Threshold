@@ -1,8 +1,8 @@
-#Arduino Threshold Library v1.0.1
+#Arduino Threshold Library v1.0.2
 Set and check numeric quantile scales.
 
-* [Documentation](https://alextaujenis.github.io/RobotsBigData/docs-arduino-threshold.html)
-* [Project Website](https://alextaujenis.github.io/RobotsBigData/)
+* [Documentation](http://robotsbigdata.com/docs-arduino-threshold.html)
+* [Project Website](http://robotsbigdata.com)
 * [Report an Issue](https://github.com/alextaujenis/RBD_Threshold/issues/new)*
 
 \**Please include your Arduino make/model and IDE version when reporting an issue with this library.*
