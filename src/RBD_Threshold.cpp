@@ -1,7 +1,6 @@
-// Arduino RBD Threshold Library v1.0.2 - Set and check numeric quantile scales.
+// Arduino RBD Threshold Library v1.0.3 - Set and check numeric quantile scales.
 // https://github.com/alextaujenis/RBD_Threshold
-// Copyright 2016 Alex Taujenis
-// MIT License
+// Copyright (c) 2015 Alex Taujenis - MIT License
 
 #include <Arduino.h>
 #include <RBD_Threshold.h> // https://github.com/alextaujenis/RBD_Threshold

@@ -1,7 +1,6 @@
-// Arduino RBD Threshold Library v1.0.2 - Unit test coverage.
+// Arduino RBD Threshold Library v1.0.3 - Unit test coverage.
 // https://github.com/alextaujenis/RBD_Threshold
-// Copyright 2016 Alex Taujenis
-// MIT License
+// Copyright (c) 2015 Alex Taujenis - MIT License
 
 #include <ArduinoUnit.h>   // https://github.com/mmurdoch/arduinounit
 #include <RBD_Threshold.h> // https://github.com/alextaujenis/RBD_Threshold
